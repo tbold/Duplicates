@@ -29,7 +29,7 @@ namespace Duplicates.Controllers
         {
 
             List<Dictionary<string, string>> table = new List<Dictionary<string, string>>();
-            using (var reader = new StreamReader(@"/Users/tanaganbold/Downloads/" + filename + ".csv"))
+            using (var reader = new StreamReader(@"/Users/" + filename + ".csv"))
             {
                 if (!reader.EndOfStream)
                 {
