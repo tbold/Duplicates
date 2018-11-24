@@ -21,7 +21,7 @@ namespace Duplicates.Controllers
         private static List<Dictionary<string, string>> ReadTableContents(string filename, List<string> columns)
         {
             List<Dictionary<string, string>> table = new List<Dictionary<string, string>>();
-            using (var reader = new StreamReader(@"/Users/tanaganbold/Downloads/" + filename + ".csv"))
+            using (var reader = new StreamReader(@"/Users/" + filename + ".csv"))
             {
                 if (reader.ReadLine() != null)
                 {
@@ -50,7 +50,7 @@ namespace Duplicates.Controllers
         private List<string> GetColumnNames(string filename)
         {
             List<string> columns = new List<string>();
-            using (var reader = new StreamReader(@"/Users/tanaganbold/Downloads/" + filename + ".csv"))
+            using (var reader = new StreamReader(@"/Users/" + filename + ".csv"))
             {
                 if (!reader.EndOfStream)
                 {
