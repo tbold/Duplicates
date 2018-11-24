@@ -1,0 +1,203 @@
+﻿@model Duplicates.Models.SearchModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<script type="text/javascript">
+    var uniqueIdentifier;
+    $(document).ready(function () {
+        prepareSearchForm();
+        $('.toggle-button').each(function(){
+            var button = $(this);
+            debugger;
+        })
+        $('#manual-card').click(function () {
+            //window.location.href='@Url.Action("Index", "Search")';
+            event.preventDefault();
+            $('#search').addClass('open');
+            @*var model = @Html.Raw(Json.Encode(@Model));
+                model.parameters=["alyson"];
+                getColumnNames('#searchTable');
+                $('#searchTable tfoot').append('<tr></tr>');
+                var table = $(activeTable + ' tfoot tr');
+                for (var i in htmlColumns){
+                    if (htmlColumns[i].data != null){
+                        table.append('<th>' + htmlColumns[i].data + '</th>');
+                    }
+                }
+                getTableContents();
+                $('#searchTable tfoot th').each(function (){
+                    var title = $(this).text();
+                    $(this).html('<input type="text" placeholder= "Search ' + title + '" />');
+                });*@
+        });
+
+        $('#search, #search button.close').on('click keyup', function (event) {
+            if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+                $(this).removeClass('open');
+            }
+        });
+        $('#search-button').click(function () {
+            getSearchResults({"id" : "", "first_name": "alfi" });
+            //getColumnNames('#searchTable');
+            //getTableContents();
+        });
+    });
+   
+    function getSearchResults(list) {
+        $.ajax({
+            url: "/Search/GetSearchResults",
+            type: "POST",
+            data: {
+                parameters: list,
+                filename: "MOCK_DATA"
+            },
+            success: function (data) {
+                prepareSearchResults(data);
+            },
+            error: function () {
+                alert("no results");
+            }
+        })
+    }
+
+    function prepareSearchResults(data) {
+        $.ajax({
+            url: "/Table/GetSubsetTable",
+            type: "POST",
+            data: {
+                fields: data,
+                filename: "MOCK_DATA"
+            },
+            success: function (data) {
+                debugger;
+            },
+            error: function () {
+                alert("could not load results table")
+            }
+        })
+    }
+
+    function prepareSearchForm() {
+        var columns = [];
+        $.ajax({
+            url: "/Table/GetColumns",
+            type: "POST",
+            data: { filename: "MOCK_DATA" },
+            success: function (data) {
+                for (var i in data) {
+                    columns.push(data[i]);
+                }
+                initSearchForm(columns);
+            },
+            error: function () {
+                alert("couldn't get column info");
+            }
+        })
+    }
+
+    function initSearchForm(columns) {
+        for (var i in columns) {
+            $('.modal-dialog').append('<div class="search-group" id=column' + i + '></div>');
+            $('#column' + i).append('<label for="' + columns[i].toLowerCase() + '" style="color:white">' + columns[i] + ':</label>');
+            $('#column' + i).append('<input id="' + columns[i].toLowerCase() + '" type="text" class="form-control" />');
+        }
+    }
+</script>
+
+
+<section class="section section--vesi">
+    <h2 class="section__title">
+        Step 1: Select unique identifier
+    </h2>
+    <div class="toggle-button toggle-button--vesi">
+        <input id="toggleButton5" type="checkbox">
+        <label for="toggleButton5" data-on-text="unique id" data-off-text="id"></label>
+        <div class="toggle-button__icon"></div>
+    </div>
+    <div class="toggle-button toggle-button--vesi">
+        <input id="toggleButton6" type="checkbox">
+        <label for="toggleButton6" data-on-text="unique first_name" data-off-text="first_name"></label>
+        <div class="toggle-button__icon"></div>
+    </div>
+    <div class="toggle-button toggle-button--vesi">
+        <input id="toggleButton7" type="checkbox">
+        <label for="toggleButton7" data-on-text="unique last_name" data-off-text="last_name"></label>
+        <div class="toggle-button__icon"></div>
+    </div>
+    <div class="toggle-button toggle-button--vesi">
+        <input id="toggleButton8" type="checkbox">
+        <label for="toggleButton8" data-on-text="unique email" data-off-text="email"></label>
+        <div class="toggle-button__icon"></div>
+    </div>
+</section>
+
+<div id="search" style="overflow-y: scroll">
+    <button type="button" class="close">x</button>
+    <div class="modal-dialog">
+
+    </div>
+    <button id="search-button" type="submit" class="btn btn-primary">Search</button>
+</div>
+
+<section class="flex-sect">
+    <div class="container-width">
+        <div class="flex-title">Step 2: Select search option</div>
+        <div class="flex-desc"> With flexbox system you're able to build complex layouts easily and with free responsivity</div>
+        <div class="cards">
+            <div class="card" id="name-card">
+                <div id="ilx56" class="card-header"></div>
+                <div class="card-body">
+                    <div class="card-title">By Name</div>
+                    <div class="card-sub-title"> Find duplicate records by First and Last Name</div>
+                    <div class="card-desc"> ...</div>
+                </div>
+            </div>
+            <div class="card" id="address-card">
+                <div class="card-header ch2">
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        By Address
+                    </div>
+                    <div class="card-sub-title">
+                        Find duplicate records by address
+                    </div>
+                    <div class="card-desc">
+                        ...
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="manual-card">
+                <div class="card-header ch3">
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        Manual Search
+                    </div>
+                    <div class="card-sub-title">
+                        Find duplicate records by manual searching
+                    </div>
+                    <div class="card-desc">
+                        ...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="flex-sect">
+    <div class="container-width" style="font-size: 12px;">
+        <table id="searchTable" class="table table-striped table-hover order-column table-order-column wb-tables-filter dataTable" style="min-width: 200px; color: black; font-size: 12px;" aria-live="polite">
+            <thead>
+
+            </thead>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</section>
