@@ -13,7 +13,6 @@ namespace Duplicates.Controllers
         // GET: Search
         public ActionResult Index()
         {
-            SearchModel model = new SearchModel();
             return View();
         }
 
@@ -21,8 +20,7 @@ namespace Duplicates.Controllers
         public ActionResult GetSearchResults(Dictionary<string, string> parameters, string filename)
         {
             List<Dictionary<string, string>> searchFields = SearchDatabase(parameters, filename);
-            List<Dictionary<string, string>> similarFields = FindMetaphone(parameters, searchFields);
-            return Json(similarFields, JsonRequestBehavior.AllowGet);
+            return Json(searchFields, JsonRequestBehavior.AllowGet);
         }
 
         private List<Dictionary<string, string>> SearchDatabase(Dictionary<string, string> parameters, string filename)
@@ -41,17 +39,31 @@ namespace Duplicates.Controllers
                         Dictionary<string, string> row = new Dictionary<string, string>();
                         for (int i = 0; i < keys.Count; i++)
                         {
-                            int count = Array.IndexOf(columns, keys[i]);
-                            row.Add(columns[count], line[count].ToString());
+                            int id = keys.IndexOf("uniqueID");
+                            if (id != i)
+                            {
+                                int searchField = Array.IndexOf(columns, keys[i]);
+                                DoubleMetaphone _generator = new DoubleMetaphone();
+                                string[] match = new string[2];
+                                match[0] = line[searchField];
+                                match[1] = parameters[keys[i]];
+                                if (_generator.IsSimilar(match))
+                                {
+                                    for (int j = 0; j < line.Length; j++)
+                                    {
+                                        row.Add(columns[j], line[j]);
+                                    }
+                                    table.Add(row);
+                                }
+                            }
                         }
-
-                        table.Add(row);
                     }
                 }
             }
             return table;
         }
 
+        /*
         private List<Dictionary<string, string>> FindMetaphone(Dictionary<string, string> parameters, List<Dictionary<string, string>> searchFields)
         {
             string[] Fields = new string[searchFields.Count()];
@@ -84,7 +96,7 @@ namespace Duplicates.Controllers
 
             }
             return results;
-        }
+        }*/
 
     }
 }

@@ -1,18 +1,18 @@
 ﻿var htmlColumns = [];
 var activeTable = [];
 
-function getColumnNames(table) {
-    activeTable = table;
-    var columns = [];
-    $.ajax({
+//ajax call to retrieve columns from file
+function getColumnNames() {
+    return $.ajax({
         url: "/Table/GetColumns",
         type: "POST",
         data: { filename: "MOCK_DATA" },
         success: function (data) {
+        //reset html columns
+        htmlColumns = [];
             for (var i in data) {
-                columns.push(data[i]);
+                columns.push({"data" : data[i]});
             }
-            prepHtmlColumns(columns);
         },
         error: function () {
             alert("couldn't read columns");
@@ -20,13 +20,7 @@ function getColumnNames(table) {
     });
 }
 
-
-function prepHtmlColumns(columns){
-    for (var i in columns) {
-        htmlColumns.push({ "data": columns[i] });
-    }
-}
-
+//need to add tags to the table before initializing it as a DataTable
 function prepHtmlTable() {
     $(activeTable + ' thead').empty().append('<tr></tr>');
     var table = $(activeTable + ' tr');
@@ -37,6 +31,7 @@ function prepHtmlTable() {
     }
 }
 
+//ajax call to read the rest of the table contents
 function getTableContents() {
     $.ajax({
         url: "/Table/ReadTable",
@@ -51,12 +46,12 @@ function getTableContents() {
     });
 }
 
+//initialize DataTable object to display on page
 function initHtmlTable(contents) {
     $(activeTable).DataTable({
         retrieve: true,
         data: contents,
-        columns: htmlColumns,
-        order: [[1, "asc"]]
+        columns: htmlColumns
     });
 }
 

@@ -1,13 +1,12 @@
 ﻿@{
     ViewBag.Title = "Database";
 }
-<div class="container-fluid text-center">
-    <h3>@ViewBag.Title</h3>
-</div>
-<script type="text/javascript">var htmlColumns = [];
+
+<script type="text/javascript">
 
     $(document).ready(function () {
-        getColumnNames('#table1');
+        activeTable = '#table1';
+        getColumnNames();
         prepHtmlTable();
         getTableContents();
     });

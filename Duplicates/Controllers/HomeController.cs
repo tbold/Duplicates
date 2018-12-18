@@ -11,8 +11,7 @@ namespace Duplicates.Controllers
     {
         public ActionResult Index()
         {
-            SearchModel model = new SearchModel();
-            return View(model);
+            return View();
         }
 
         public ActionResult Contact()

@@ -1,19 +1,20 @@
 ﻿<Properties StartupConfiguration="{3CCC18B8-CF71-4027-9C44-87326BFAD6AC}|">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Duplicates Status">
+    <Files>
+      <File FileName="Duplicates/Views/Shared/_Layout.cshtml" Line="9" Column="1" />
+      <File FileName="Duplicates/App_Start/BundleConfig.cs" Line="10" Column="1" />
+      <File FileName="Duplicates/Views/Search/Index.cshtml" Line="8" Column="36" />
+      <File FileName="Duplicates/Scripts/DataTableManager.js" Line="5" Column="24" />
+      <File FileName="Duplicates Status" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Duplicates" expanded="True">
-            <Node name="Duplicates" expanded="True">
-              <Node name="Content" expanded="True" />
-              <Node name="Controllers" expanded="True" />
-              <Node name="Scripts" expanded="True" />
+            <Node name="Duplicates" expanded="True" selected="True">
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
                 <Node name="Search" expanded="True" />
-                <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" selected="True" />
-                </Node>
+                <Node name="Shared" expanded="True" />
               </Node>
             </Node>
           </Node>
