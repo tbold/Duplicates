@@ -119,14 +119,14 @@ body {
     background-color: #fafafa;
 }
 
-.cards {
+.cards-custom {
     padding: 20px 0;
     display: flex;
     justify-content: space-around;
     flex-flow: wrap;
 }
 
-.card {
+.card-custom {
     background-color: white;
     height: 300px;
     width: 300px;
@@ -138,49 +138,49 @@ body {
     overflow: hidden;
 }
 
-    .card:hover {
+    .card-custom:hover {
         margin-top: -5px;
         box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.2);
     }
 
-.card-header {
+.card-custom-header {
     height: 155px;
     background-size: cover;
     background-position: center center;
 }
 
-    .card-header.ch2 {
+    .card-custom-header.ch2 {
     }
 
-    .card-header.ch3 {
+    .card-custom-header.ch3 {
     }
 
-    .card-header.ch4 {
+    .card-custom-header.ch4 {
     }
 
-    .card-header.ch5 {
+    .card-custom-header.ch5 {
     }
 
-    .card-header.ch6 {
+    .card-custom-header.ch6 {
     }
 
-.card-body {
+.card-custom-body {
     padding: 15px 15px 5px 15px;
     color: #555;
 }
 
-.card-title {
+.card-custom-title {
     font-size: 1.4em;
     margin-bottom: 5px;
 }
 
-.card-sub-title {
+.card-custom-sub-title {
     color: #b3b3b3;
     font-size: 1em;
     margin-bottom: 15px;
 }
 
-.card-desc {
+.card-custom-desc {
     font-size: 0.85rem;
     line-height: 17px;
 }
@@ -505,7 +505,7 @@ select.form-control:focus {
     }
 }
 
-.content, .section section--vesi{
+.section section--vesi{
     padding: 0 18px;
     background-color: #54567A;
     max-height: 0;

@@ -14,28 +14,26 @@ namespace Duplicates.Controllers
         public ActionResult ReadTable(string filename)
         {
             List<string> columns = GetColumnNames(filename);
-            var table = ReadTableContents(filename, columns);
+            List<Dictionary<string, string>> table = new List<Dictionary<string, string>>();
             return Json(table, JsonRequestBehavior.AllowGet);
         }
 
-        private static List<Dictionary<string, string>> ReadTableContents(string filename, List<string> columns)
+        public static List<Dictionary<string, string>> ReadTableContents(string[] columns, string[] data)
         {
             List<Dictionary<string, string>> table = new List<Dictionary<string, string>>();
-            using (var reader = new StreamReader(@"/Users/" + filename + ".csv"))
             {
-                if (reader.ReadLine() != null)
+                for (var i = 1; i < data.Count() - 1; i++)
                 {
-                    while (!reader.EndOfStream)
+                    var line = data[i].Split(',');
+                    Dictionary<string, string> row = new Dictionary<string, string>();
+                    for (int j = 0; j < line.Length; j++)
                     {
-                        var line = reader.ReadLine().Split(',');
-                        Dictionary<string, string> row = new Dictionary<string, string>();
-                        for (int i = 0; i < line.Length; i++)
-                        {
-                            row.Add(columns[i], line[i].ToString());
-                        }
-                        table.Add(row);
+                        row.Add(columns[j], line[j]);
                     }
+                    table.Add(row);
                 }
+
+
             }
             return table;
         }
@@ -62,29 +60,6 @@ namespace Duplicates.Controllers
                 }
             }
             return columns;
-        }
-
-        [HttpPost]
-        public List<Dictionary<string, string>> GetSubsetTable(List<Dictionary<string, string>> fields, string filename)
-        {
-            List<string> columns = GetColumnNames(filename);
-            List<Dictionary<string, string>> table = ReadTableContents(filename, columns);
-            List<Dictionary<string, string>> results = new List<Dictionary<string, string>>();
-            for (int j = 0; j < table.Count(); j++)
-            {
-                List<string> tableKeys = new List<string>(table[j].Keys);
-                List<string> fieldsKeys = new List<string>(fields[0].Keys);
-                Dictionary<string, string> row = new Dictionary<string, string>();
-
-                for (int i = 0; i < fieldsKeys.Count(); i++)
-                {
-                    if (tableKeys.IndexOf(fieldsKeys[i]) != -1)
-                    {
-                        //row.Add();
-                    }
-                }
-            }
-            return results;
         }
     }
 }

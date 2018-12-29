@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Duplicates.Models;
-
-namespace Duplicates.Controllers
+using Duplicates.Controllers;
+namespace DuplicatesFinder.Controllers
 {
     public class HomeController : Controller
     {
@@ -22,6 +21,13 @@ namespace Duplicates.Controllers
         public ActionResult Database()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult ReadTable(string[] columns, string[] data)
+        {
+            List<Dictionary<string, string>> table = new List<Dictionary<string, string>>();
+            table = TableController.ReadTableContents(columns, data);
+            return Json(table, JsonRequestBehavior.AllowGet);
         }
     }
 }
