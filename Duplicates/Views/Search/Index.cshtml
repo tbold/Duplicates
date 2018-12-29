@@ -4,11 +4,11 @@
 
 <script type="text/javascript">
     var uniqueIdentifier;
-    var data;
+    var uploadedFile;
 
     $(document).ready(function () {
         $('#headingTwo2').click(function (event) {
-            if (data) {
+            if (uploadedFile) {
                 $("#headingTwo2").collapse('toggle');
             } else {
                 event.preventDefault();
@@ -41,7 +41,7 @@
             var reader = new FileReader();
             reader.readAsText(file);
             reader.onload = function (e) {
-                data = e.target.result.split(/\r\n|\n/);
+                var data = e.target.result.split(/\r\n|\n/);
                 triggerEvents(data);
             }
 
@@ -98,7 +98,7 @@
             for (var i in columns) {
                 htmlColumns.push({ "data": columns[i] });
             }
-            data = result;
+            uploadedFile = result;
             alert('done!');
         });
     }
@@ -110,9 +110,8 @@
 
             var result = (getSearchResults(parameters)).done(function () {
                 $('.loading-screen').removeClass('open');
-                $('#results').trigger('click');
                 $('html, body').animate({
-                    scrollTop: $("#results").offset().top
+                    scrollTop: $("#searchTable").offset().top
                 }, 1000);
             });
         } else {
@@ -168,7 +167,7 @@
             data: {
                 parameters: list,
                 columns: htmlColumns,
-                data: data
+                data: uploadedFile
             },
             error: function () {
                 alert("no results");
@@ -248,14 +247,13 @@
           aria-expanded="false" aria-controls="collapseFour2" style="color: #000000;">
           Step 4: Review results
     </div>
-     
     <div id="collapseFour2" class="collapse" aria-labelledby="headingFour2" data-parent="#accordionExample2">
       <div class="card-body" style="font-size: 12px; background-color: #fafafa;">
-        <table id="searchTable" class="table table-striped table-hover" style="min-width: 200px; color: black; font-size: 12px;" aria-live="polite">
-                <thead>
+        <table id="searchTable" class="table table-striped table-hover" style="color: black; font-size: 12px;">
+            <thead>
 
-                </thead>
-            </table>
+            </thead>
+        </table>
       </div>
     </div>
   </section>

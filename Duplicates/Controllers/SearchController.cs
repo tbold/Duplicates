@@ -30,88 +30,26 @@ namespace Duplicates.Controllers
 
             for (int i = 0; i < data.Count; i++)
             {
-                /*Dictionary<string, string> row = data[i];
-                for (int j = 0; j < parameters.Count; j++)
+                Dictionary<string, string> row = data[i];
+                foreach (var parameter in parameters.Keys)
                 {
-                    int id = columns.IndexOf("uniqueID");
-                    if (id != i)
+                    if (!Equals(parameter, "uniqueID"))
                     {
-                        int searchField = Array.IndexOf(columns, columns[i]);
                         DoubleMetaphone _generator = new DoubleMetaphone();
                         string[] match = new string[2];
-                        match[0] = columns[searchField];
-                        match[1] = parameters[columns[i]];
+                        match[0] = row[parameter];
+                        match[1] = parameters[parameter];
                         if (_generator.IsSimilar(match))
                         {
-                            for (int j = 0; j < columns.Length; j++)
-                            {
-                                row.Add(columns[j], line[j]);
-                            }
                             table.Add(row);
                         }
                     }
-                }*/
-            }
-
-            /*for (int i = 0; i < keys.Count; i++)
-            {
-                int id = keys.IndexOf("uniqueID");
-                if (id != i)
-                {
-                    int searchField = Array.IndexOf(columns, keys[i]);
-                    DoubleMetaphone _generator = new DoubleMetaphone();
-                    string[] match = new string[2];
-                    match[0] = line[searchField];
-                    match[1] = parameters[keys[i]];
-                    if (_generator.IsSimilar(match))
-                    {
-                        for (int j = 0; j < line.Length; j++)
-                        {
-                            row.Add(columns[j], line[j]);
-                        }
-                        table.Add(row);
-                    }
                 }
-            }*/
 
+            }
             return table;
+
         }
-
-        /*
-        private List<Dictionary<string, string>> FindMetaphone(Dictionary<string, string> parameters, List<Dictionary<string, string>> searchFields)
-        {
-            string[] Fields = new string[searchFields.Count()];
-            string[] Ids = new string[searchFields.Count()];
-            List<string> keys = new List<string>(parameters.Keys);
-            int count = 0;
-            foreach (var item in searchFields)
-            {
-                Fields[count] = item[keys[1]];
-                Ids[count++] = item[keys[0]];
-            }
-            List<Dictionary<string, string>> results = new List<Dictionary<string, string>>();
-            DoubleMetaphone _generator = new DoubleMetaphone();
-            for (int i = 0; i < Fields.Length; i++)
-            {
-                string[] match = new string[2];
-                match[0] = Fields[i];
-                match[1] = parameters[keys[1]];
-                bool similar = _generator.IsSimilar(match);
-                if (similar)
-                {
-                    Dictionary<string, string> row = new Dictionary<string, string>();
-                    for (int j = 0; j < keys.Count(); j++)
-                    {
-                        row.Add(keys[j], searchFields[i][keys[j]]);
-                        //row.Add(searchFields[i]);
-                    }
-                    results.Add(row);
-                }
-
-            }
-            return results;
-        }*/
-
     }
 }
 

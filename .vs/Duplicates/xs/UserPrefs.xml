@@ -1,20 +1,17 @@
 ﻿<Properties StartupConfiguration="{3CCC18B8-CF71-4027-9C44-87326BFAD6AC}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Duplicates Status">
     <Files>
-      <File FileName="Duplicates/Views/Search/Index.cshtml" Line="120" Column="10" />
-      <File FileName="Duplicates/Controllers/SearchController.cs" Line="29" Column="1" />
+      <File FileName="Duplicates/Views/Search/Index.cshtml" Line="183" Column="19" />
+      <File FileName="Duplicates/Controllers/SearchController.cs" Line="50" Column="1" />
+      <File FileName="Duplicates/Scripts/DataTableManager.js" Line="20" Column="8" />
       <File FileName="Duplicates/Controllers/HomeController.cs" Line="30" Column="1" />
-      <File FileName="Duplicates/Controllers/TableController.cs" Line="21" Column="56" />
-      <File FileName="Duplicates/Scripts/DataTableManager.js" Line="31" Column="6" />
       <File FileName="Duplicates Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Duplicates PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/tanaganbold/Projects/Duplicates/Duplicates/Controllers/SearchController.cs" relfile="Duplicates/Controllers/SearchController.cs" line="29" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
