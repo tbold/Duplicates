@@ -122,7 +122,6 @@
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Content\Images\bg-gr-v.png" />
-    <Content Include="Content\Images\header.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -403,6 +402,11 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\creative.js" />
+    <Content Include="Scripts\creative.min.js" />
+    <Content Include="Content\creative.css" />
+    <Content Include="Content\creative.min.css" />
+    <Content Include="Content\Images\header.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\bootstrap.min.js.map" />

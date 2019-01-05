@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{3CCC18B8-CF71-4027-9C44-87326BFAD6AC}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Duplicates Status">
     <Files>
-      <File FileName="Duplicates/Views/Search/Index.cshtml" Line="183" Column="19" />
-      <File FileName="Duplicates/Controllers/SearchController.cs" Line="50" Column="1" />
-      <File FileName="Duplicates/Scripts/DataTableManager.js" Line="20" Column="8" />
-      <File FileName="Duplicates/Controllers/HomeController.cs" Line="30" Column="1" />
+      <File FileName="Duplicates/Content/Site.css" Line="13" Column="21" />
+      <File FileName="Duplicates/Views/Shared/_Layout.cshtml" Line="16" Column="9" />
+      <File FileName="Duplicates/Content/custom.css" Line="21" Column="5" />
+      <File FileName="Duplicates/Content/creative.css" Line="10" Column="16" />
+      <File FileName="Duplicates/Views/Search/Index.cshtml" Line="224" Column="47" />
       <File FileName="Duplicates Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

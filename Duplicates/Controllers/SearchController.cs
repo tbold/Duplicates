@@ -13,42 +13,56 @@ namespace Duplicates.Controllers
         // GET: Search
         public ActionResult Index()
         {
-            return View();
+            SearchModel model = new SearchModel();
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult GetSearchResults(Dictionary<string, string> parameters, Dictionary<string, string> columns, List<Dictionary<string, string>> data)
+        public ActionResult SearchManually(Dictionary<string, string> parameters, List<Dictionary<string, string>> data)
         {
-            List<Dictionary<string, string>> searchFields = SearchDatabase(parameters, columns, data);
-            return Json(searchFields, JsonRequestBehavior.AllowGet);
+            List<Dictionary<string, string>> table = new List<Dictionary<string, string>>();
+            table = SearchDatabase(parameters, data, table);
+            return Json(table, JsonRequestBehavior.AllowGet);
         }
 
-        private List<Dictionary<string, string>> SearchDatabase(Dictionary<string, string> parameters, Dictionary<string, string> columns, List<Dictionary<string, string>> data)
+        private List<Dictionary<string, string>> SearchDatabase(Dictionary<string, string> parameters, List<Dictionary<string, string>> data, List<Dictionary<string, string>> table)
         {
-
-            List<Dictionary<string, string>> table = new List<Dictionary<string, string>>();
 
             for (int i = 0; i < data.Count; i++)
             {
                 Dictionary<string, string> row = data[i];
-                foreach (var parameter in parameters.Keys)
+                foreach (var parameter in parameters)
                 {
-                    if (!Equals(parameter, "uniqueID"))
+                    if (!Equals(parameter.Key, "uniqueID"))
                     {
                         DoubleMetaphone _generator = new DoubleMetaphone();
                         string[] match = new string[2];
-                        match[0] = row[parameter];
-                        match[1] = parameters[parameter];
+                        match[0] = row[parameter.Key];
+                        match[1] = parameters[parameter.Key];
                         if (_generator.IsSimilar(match))
                         {
                             table.Add(row);
+                            data.Remove(row);
                         }
                     }
                 }
-
             }
             return table;
+        }
 
+        [HttpPost]
+        public ActionResult SearchByVariable(SearchModel model, string searchVariable)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["uniqueID"] = model.uniqueIdentifier;
+            List<Dictionary<string, string>> table = new List<Dictionary<string, string>>();
+            List<Dictionary<string, string>> data = model.data;
+            for (int i = 0; i < data.Count; i++)
+            {
+                parameters[searchVariable] = model.data[i][searchVariable];
+                SearchDatabase(parameters, data, table);
+            }
+            return Json(table, JsonRequestBehavior.AllowGet);
         }
     }
 }

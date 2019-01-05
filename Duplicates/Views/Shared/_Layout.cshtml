@@ -4,54 +4,67 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @*@Styles.Render("~/Content/css")
+   @* @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")*@
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
-    <script src="~/Scripts/jquery-3.3.1.min.js"></scri pt>
-    <script src="~/Scripts/jquery.dataTable.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/DataTableManager.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet"/>
+    <link href="~/DataTables/css/jquery.dataTables.min.css" rel="stylesheet"/>
     <link href="~/Content/custom.css" rel="stylesheet" />
     
+        <!-- Custom styles for this template -->
+    <link href="~/Content/creative.min.css" rel="stylesheet">
+        
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTableManager.js"></script>
+    <script src="~/Scripts/creative.min.js"></script>
 </head>
 
-<body>
-    <header class="header-banner">
-        <!--Navbar-->
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-            <!-- Brand -->
-            @Html.ActionLink("Duplicates", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <!-- Toggler/collapsibe Button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navbar links -->
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Search")">Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Database", "Home")">Database</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        
-        <div class="container-width">
-            
-            <div class="clearfix"></div>
-            <div class="lead-title">@ViewBag.Title</div>
+<body id="page-top">
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="@Url.Action("Index", "Home")">Duplicates</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="@Url.Action("Index", "Search")">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="@Url.Action("Database", "Home")">Database</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact</a>
+            </li>
+          </ul>
         </div>
-    </header>
+      </div>
+    </nav>
 
+    <header class="masthead text-center text-white d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h1 class="text-uppercase">
+              <strong style="color: black">@ViewBag.Title</strong>
+            </h1>
+            <hr>
+          </div>
+          <div class="col-lg-8 mx-auto">
+            <p class="text-faded mb-5">Helper for database cleanup</p>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+          </div>
+        </div>
+      </div>
+    </header>
+   
     @RenderBody()
     <footer>
         <!--<div class="footer-container">

@@ -62,4 +62,3 @@
 /Users/tanaganbold/Projects/Duplicates/Duplicates/obj/Debug/Duplicates.csproj.CopyComplete
 /Users/tanaganbold/Projects/Duplicates/Duplicates/obj/Debug/Duplicates.dll
 /Users/tanaganbold/Projects/Duplicates/Duplicates/obj/Debug/Duplicates.pdb
-/Users/tanaganbold/Projects/Duplicates/Duplicates/obj/Debug/Duplicates.csprojAssemblyReference.cache

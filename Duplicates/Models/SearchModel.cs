@@ -6,6 +6,8 @@ namespace Duplicates.Models
 {
     public class SearchModel
     {
-        public List<string> Parameters { get; set; }
+        public string uniqueIdentifier { get; set; }
+        public List<Dictionary<string, string>> data { get; set; }
+        public List<string> columns { get; set; }
     }
 }

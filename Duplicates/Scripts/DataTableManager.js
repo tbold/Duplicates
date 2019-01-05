@@ -1,8 +1,12 @@
 ﻿var htmlColumns = [];
 var activeTable = [];
 
-//need to add tags to the table before initializing it as a DataTable
+//need to add tags to the table before initialising it as a DataTable object
 function prepHtmlTable() {
+    if ($.fn.DataTable.isDataTable(activeTable)) {
+        $(activeTable).DataTable().destroy();
+        $(activeTable + ' tbody').empty();
+    }
     $(activeTable + ' thead').empty().append('<tr></tr>');
     var table = $(activeTable + ' tr');
     for (var i in htmlColumns) {
@@ -12,6 +16,7 @@ function prepHtmlTable() {
     }
 }
 
+
 //initialize DataTable object to display on page
 function initHtmlTable(contents) {
     $(activeTable).DataTable({
@@ -19,4 +24,3 @@ function initHtmlTable(contents) {
         columns: htmlColumns
     });
 }
-
