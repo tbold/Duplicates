@@ -18,7 +18,7 @@ namespace DuplicatesFinder.Controllers
             return View();
         }
 
-        public ActionResult Database()
+        public ActionResult About()
         {
             return View();
         }

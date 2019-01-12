@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<script type="text/javascript">
+    $(document).ready(function (){
+       $('#scrollButton').show();
+       
+    });
+   function clickAction(){
+     $('html, body').animate({
+           scrollTop: $('#algorithm').offset().top
+      }, 1000);
+   }
+    function scrollAction(){
+     $('html, body').animate({
+           scrollTop: $('#about').offset().top
+      }, 1000);
+   }
+</script>
+
+<section class="bg-primary" id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h2 class="section-heading text-white">The Project</h2>
+        <hr class="light my-4">
+        <p class="text-faded mb-4">A personal project to practice ASP .NET MVC application building. Uses Double Metaphone encoding algorithm to search for duplicate values in a database/table.</p>
+        <a class="btn btn-light btn-xl" onclick="clickAction()">The Algorithm</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="algorithm">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading">The Algorithm&#42</h2>
+            <hr class="my-4">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fas fa-4x fa-gem text-primary mb-3 sr-icon-1"></i>
+              <h3 class="mb-3">Metaphone</h3>
+            </div>
+          </div>
+           <div class="col text-center">
+            <div class="service-box mt-5 mx-auto">
+              <p class="text-muted mb-0">Metaphone is a phonetic algorithm, published by Lawrence Philips in 1990, for indexing words by their English pronunciation.It fundamentally improves on the Soundex algorithm by using information about variations and inconsistencies in English spelling and pronunciation to produce a more accurate encoding, which does a better job of matching words and names which sound similar. As with <a href="https://en.wikipedia.org/wiki/Soundex">Soundex</a>, similar-sounding words should share the same keys. </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fas fa-4x fa-feather-alt text-primary mb-3 sr-icon-1"></i>
+              <h3 class="mb-3">Double Metaphone</h3>
+            </div>
+          </div>
+           <div class="col text-center">
+            <div class="service-box mt-5 mx-auto">
+              <p class="text-muted mb-0">The Double Metaphone phonetic encoding algorithm is the second generation of this algorithm. Its implementation was described in the June 2000 issue of C/C++ Users Journal. It is called "Double" because it can return both a primary and a secondary code for a string; this accounts for some ambiguous cases as well as for multiple variants of surnames with common ancestry. Double Metaphone tries to account for myriad irregularities in English of Slavic, Germanic, Celtic, Greek, French, Italian, Spanish, Chinese, and other origin. Thus it uses a much more complex ruleset for coding than its predecessor; for example, it tests for approximately 100 different contexts of the use of the letter C alone.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col text-left">
+                <p class="text-muted">&#10033source: <a href="https://en.wikipedia.org/wiki/Metaphone#Double_Metaphone">Wikipedia</a></p>
+            </div>
+        </div>
+      </div>
+ </section>
+
+

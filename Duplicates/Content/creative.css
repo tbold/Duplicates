@@ -178,7 +178,6 @@ img::-moz-selection {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 56px);
-  background-image: url("/Images/header.png");
   background-position: center center;
   background-size: cover;
 }

@@ -9,6 +9,7 @@
     var model = @Html.Raw(Json.Encode(@Model));
 
     $(document).ready(function () {
+        $('#startButton').show();
         $('#headingTwo2').click(function (event) {
             if (!model.data) {
                 alert("upload a file first");
@@ -142,6 +143,7 @@
     }
 
     function prepareCheckboxes() {
+        $('#checkboxes').empty();
         for (var i in htmlColumns) {
             $('#checkboxes').append('<div class="toggle-button toggle-button--vesi" id="toggle-' + i + '"></div>');
             $('#toggle-' + i).append('<input id="toggleButton' + i + '" type="checkbox">');
@@ -208,7 +210,13 @@
                 $('#column' + i).append('<input id="' + htmlColumns[i].data + '" type="text" class="form-control" />');
             }
         }
-        $('.search-form').append('<br /><button id="search-button" type="button" class="btn btn-primary" onclick="submitAction()">Search</button>');
+        $('.search-form').append('<br /><button id="search-button" type="button" class="btn btn-primary" onclick="submitAction()"><i class="fas fa-2x fa-search sr-icon-1"></button>');
+    }
+    
+    function startAction(){
+        $('html, body').animate({
+               scrollTop: $('#accordionExample2').offset().top
+          }, 1000);
     }
 </script>
 
@@ -221,56 +229,60 @@
     </div>
 </div>
 
-<div class="accordion" id="accordionExample2">
-  <section class="section section--vesi" style="background-color: #c8c8c8">
-    <div class="section__title" id="headingOne2" data-toggle="collapse" data-target="#collapseOne2"
+<div class="accordion text-center" id="accordionExample2">
+    <section class="bg-primary" id="about">
+    <h2 class="section-heading text-white" id="headingOne2" data-toggle="collapse" data-target="#collapseOne2"
       aria-expanded="true" aria-controls="collapseOne2">
       Step 1: Upload a File
-    </div>
+    </h2>
+    <hr class="light my-4">
     <div id="collapseOne2" class="collapse" aria-labelledby="headingOne2" data-parent="#accordionExample2">
       <div class="card-body">
        <input type="file" id="fileinput" />
-            <button id="uploadButton" class="btn btn-primary" onclick="uploadAction()">Submit</button>
+            <button id="uploadButton" class="btn btn-light" onclick="uploadAction()"><i class="fas fa-1x fa-upload mb-2"></i></button>
       </div>
     </div>
-  </section>
-  <section class="section section--vesi" >
-    <div class="section__title" id="headingTwo2" data-toggle="collapse" data-target="#collapseTwo2"
+    </section>
+  <section>
+    <h2 class="section-heading" id="headingTwo2" data-toggle="collapse" data-target="#collapseTwo2"
          aria-expanded="false" aria-controls="collapseTwo2">
             Step 2: Select a unique identifier
-    </div>
-     
+    </h2>
+    <hr class="my-4">
     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionExample2">
       <div class="card-body" id="checkboxes">
        
       </div>
     </div>
   </section>
-  <section class="section section--vesi"  style="background-color: #c8c8c8">
-    <div class="section__title" id="headingThree2" data-toggle="collapse" data-target="#collapseThree2"
-          aria-expanded="false" aria-controls="collapseThree2">
-          Step 3: Select a search option
-    </div>
-     
+  <section class="bg-dark text-white">
+    <h2 class="section-heading text-white" id="headingThree2" data-toggle="collapse" data-target="#collapseThree2"
+      aria-expanded="false" aria-controls="collapseThree2">
+      Step 3: Select a search option
+    </h2>
+    <hr class="light my-4">
     <div id="collapseThree2" class="collapse" aria-labelledby="headingThree2" data-parent="#accordionExample2">
       <div class="cards-custom" id="search-cards">
         
       </div>
     </div>
   </section>
-    <section class="section section--vesi"  style="background-color: #fafafa">
-    <div class="section__title" id="headingFour2" data-toggle="collapse" data-target="#collapseFour2"
+    
+  <section>
+    <h2 class="section-heading" id="headingFour2" data-toggle="collapse" data-target="#collapseFour2"
           aria-expanded="false" aria-controls="collapseFour2" style="color: #000000;">
           Step 4: Review results
-    </div>
-    <div id="collapseFour2" class="collapse" aria-labelledby="headingFour2" data-parent="#accordionExample2">
-      <div class="card-body" style="font-size: 12px; background-color: #fafafa; position: center">
-        <table id="searchTable" class="table table-striped table-hover" style="color: black; font-size: 12px;">
+    </h2>
+    <hr class="my-4">
+    <div id="collapseFour2" class="collapse" aria-labelledby="headingFour2" data-parent="#accordionExample2" style="width:100%; position: center">
+        <div class="container" style="width:100%; position: center">
+            <table id="searchTable" class="table table-striped table-hover" style="color: black; font-size: 12px;">
             <thead>
 
             </thead>
         </table>
-      </div>
+        </div>
+        
     </div>
   </section>
 </div>

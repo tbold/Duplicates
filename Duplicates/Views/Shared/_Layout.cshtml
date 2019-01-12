@@ -9,11 +9,11 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/Site.css" rel="stylesheet"/>
     <link href="~/DataTables/css/jquery.dataTables.min.css" rel="stylesheet"/>
-    <link href="~/Content/custom.css" rel="stylesheet" />
-    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <!-- Custom styles for this template -->
     <link href="~/Content/creative.min.css" rel="stylesheet">
-        
+    <link href="~/Content/custom.css" rel="stylesheet" />
+
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
@@ -23,7 +23,7 @@
 
 <body id="page-top">
         <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="@Url.Action("Index", "Home")">Duplicates</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,14 +32,14 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link" href="@Url.Action("About", "Home")">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="@Url.Action("Index", "Search")">Search</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <a class="nav-link" href="@Url.Action("Database", "Home")">Database</a>
-            </li>
+            </li>-->
             <li class="nav-item">
               <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact</a>
             </li>
@@ -48,18 +48,21 @@
       </div>
     </nav>
 
-    <header class="masthead text-center text-white d-flex">
+    <header class="masthead text-center text-white d-flex" style="background-image: url(../Content/Images/header.png);">
       <div class="container my-auto">
         <div class="row">
           <div class="col-lg-10 mx-auto">
             <h1 class="text-uppercase">
-              <strong style="color: black">@ViewBag.Title</strong>
+              <strong>@ViewBag.Title</strong>
             </h1>
             <hr>
           </div>
           <div class="col-lg-8 mx-auto">
             <p class="text-faded mb-5">Helper for database cleanup</p>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+            <a class="btn btn-primary btn-xl" id="aboutButton" style="display: none" href="@Url.Action("About", "Home")">Find Out More</a>
+            <a class="btn btn-light btn" id="scrollButton" style="display: none" onclick="scrollAction()"><i class="fas fa-2x fa-chevron-down text-primary mb-1 sr-icon-1"></i></a>
+            <a class="btn btn-light btn" id="startButton" style="display: none" onclick="startAction()"><i class="fas fa-2x fa-chevron-down text-primary mb-1 sr-icon-1"></i></a>
+
           </div>
         </div>
       </div>
